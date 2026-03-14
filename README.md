@@ -69,7 +69,7 @@ xelatex main.tex
 xelatex main.tex
 ```
 
-也可在 TeXstudio 中配置：
+也可在 TeXstudio 中配置`一键编译`：
 
 ```bash
 latexmk -xelatex -synctex=1 %.tex
