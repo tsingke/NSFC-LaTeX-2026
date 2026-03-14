@@ -87,3 +87,15 @@ latexmk -xelatex -synctex=1 %.tex
 ## License
 
 本项目采用 MIT License 发布。详见仓库中的 LICENSE 文件。
+
+
+## 项目联系信息
+
+本项目主要用于国家自然科学基金面上项目申请书正文写作的 LaTeX 模板整理、写作逻辑示范与学术交流。
+若您在使用过程中发现问题，或希望对模板结构、版式细节、参考文献样式和正文写作逻辑提出改进建议，欢迎通过以下方式联系：
+
+- 联系人：Qingke Zhang
+- 所在单位：Shandong Normal University
+- 联系邮箱：tsingke@sdnu.edu.cn
+- 项目主页：[https://github.com/tsingke/NSFC-LaTeX-2026](https://github.com/tsingke/NSFC-LaTeX-2026)
+- Issues 反馈：建议优先通过 GitHub Issues 提交问题与建议
