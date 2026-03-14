@@ -72,10 +72,10 @@ latexmk -xelatex -synctex=1 %.tex
 
 ## 使用说明
 
-1. 本项目保留了 `nsfc.sty` 的原始命令体系与版式逻辑；
+1. LaTeX样式文件: `nsfc.sty`，文献样式文件：`GBT7714.bst`,；
 2. `main.tex` 中使用标准 `\section / \subsection / \subsubsection`，便于 TeXstudio 左侧结构栏导航；
 3. 参考文献采用数字型引用，示例文献用于说明写作逻辑，不代表 NSFC 官方参考文献清单；
-4. 可直接将 `main.tex` 作为正文写作骨架，按学科领域替换具体内容。
+4. 可直接将 `main.tex` 作为正文写作框架，内容逻辑可自行组织，按学科领域替换具体内容。
 
 ## 版权与声明
 
