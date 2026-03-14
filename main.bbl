@@ -1,0 +1,108 @@
+\begin{thebibliography}{13}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax\else
+  \urlstyle{same}\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \DeclareUrlCommand\doi{\urlstyle{rm}}
+  \def\eprint#1#2{#2}
+\else
+  \def\doi#1{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+  \let\eprint\href
+\fi
+
+\bibitem[Herbert et~al.(2013)Herbert, Barnett, Clarke, and Graves]{Herbert2013}
+Herbert D~L, Barnett A~G, Clarke P, et~al.
+\newblock On the time spent preparing grant proposals: An observational study
+  of australian researchers\allowbreak[J/OL].
+\newblock \emph{BMJ Open}, 2013, 3\allowbreak (5): e002800.
+\newblock DOI: \doi{10.1136/bmjopen-2013-002800}.
+
+\bibitem[Sattler et~al.(2015)Sattler, McKnight, Naney, and Mathis]{Barnett2015}
+Sattler D~N, McKnight P~E, Naney L, et~al.
+\newblock Grant peer review: Improving inter-rater reliability with
+  training\allowbreak[J/OL].
+\newblock \emph{PLOS ONE}, 2015, 10\allowbreak (6): e0130450.
+\newblock DOI: \doi{10.1371/journal.pone.0130450}.
+
+\bibitem[Fang et~al.(2016)Fang and Casadevall]{Fang2016}
+Fang F~C, Casadevall A.
+\newblock Research funding: the case for a modified lottery\allowbreak[J/OL].
+\newblock \emph{mBio}, 2016, 7\allowbreak (2): e00422-16.
+\newblock DOI: \doi{10.1128/mBio.00422-16}.
+
+\bibitem[Roumbanis(2019)]{Nicholas2019}
+Roumbanis L.
+\newblock Peer review or lottery? a critical analysis of two different forms of
+  decision-making mechanisms for allocation of research
+  grants\allowbreak[J/OL].
+\newblock \emph{Science, Technology, \& Human Values}, 2019, 44\allowbreak (6):
+  994-1019.
+\newblock DOI: \doi{10.1177/0162243918822744}.
+
+\bibitem[Gallo et~al.(2020)Gallo, Sullivan, and Glisson]{Gallo2020}
+Gallo S~A, Sullivan J~H, Glisson S~R.
+\newblock The peer review process in research funding: Past, present, and
+  future\allowbreak[J/OL].
+\newblock \emph{Research Evaluation}, 2020, 29\allowbreak (3): 251-258.
+\newblock DOI: \doi{10.1093/reseval/rvaa009}.
+
+\bibitem[Mervis(2016)]{Mervis2016}
+Mervis J.
+\newblock Data check: U.s. government share of basic research funding falls
+  below 50\%\allowbreak[J/OL].
+\newblock \emph{Science}, 2016, 353\allowbreak (6304): 1005.
+\newblock DOI: \doi{10.1126/science.353.6304.1005}.
+
+\bibitem[Hoppe et~al.(2019)Hoppe, Litovitz, Willis, Meseroll, Perkins,
+  Hutchins, Davis, Lauer, Valantine, Anderson, and Santangelo]{Hoppe2019}
+Hoppe T~A, Litovitz A, Willis K~A, et~al.
+\newblock Topic choice contributes to the lower rate of nih awards to
+  african-american/black scientists\allowbreak[J/OL].
+\newblock \emph{Science Advances}, 2019, 5\allowbreak (10): eaaw7238.
+\newblock DOI: \doi{10.1126/sciadv.aaw7238}.
+
+\bibitem[Porter(2007)]{Porter2007}
+Porter R.
+\newblock Why academics have a hard time writing good grant
+  proposals\allowbreak[J].
+\newblock \emph{The Journal of Research Administration}, 2007, 38\allowbreak
+  (2): 37-43.
+
+\bibitem[Lee et~al.(2022)Lee, Schotland, Bacchelli, and Sholler]{Lee2022}
+Lee C, Schotland M, Bacchelli A, et~al.
+\newblock How to write a successful grant application: Guidance for
+  early-career researchers\allowbreak[J/OL].
+\newblock \emph{Accountability in Research}, 2022, 29\allowbreak (8): 493-507.
+\newblock DOI: \doi{10.1080/08989621.2022.2049576}.
+
+\bibitem[Bromham et~al.(2016)Bromham, Dinnage, and Hua]{Bromham2016}
+Bromham L, Dinnage R, Hua X.
+\newblock Interdisciplinary research has consistently lower funding
+  success\allowbreak[J/OL].
+\newblock \emph{Nature}, 2016, 534\allowbreak (7609): 684-687.
+\newblock DOI: \doi{10.1038/nature18315}.
+
+\bibitem[Ioannidis et~al.(2014)Ioannidis, Boyack, and Klavans]{Ioannidis2014}
+Ioannidis J~P~A, Boyack K~W, Klavans R.
+\newblock Bibliometrics: Is your most cited work your best?\allowbreak[J/OL].
+\newblock \emph{Nature}, 2014, 514\allowbreak (7524): 561-562.
+\newblock DOI: \doi{10.1038/514561a}.
+
+\bibitem[Bollen et~al.(2014)Bollen, Crandall, Junk, Ding, and
+  Börner]{Bollen2014}
+Bollen J, Crandall D, Junk D, et~al.
+\newblock From funding agencies to scientific agency: Collective allocation of
+  science funding as an alternative to peer review\allowbreak[J/OL].
+\newblock \emph{EMBO Reports}, 2014, 15\allowbreak (2): 131-133.
+\newblock DOI: \doi{10.1002/embr.201338068}.
+
+\bibitem[Danthi et~al.(2014)Danthi, Wu, DiMichele, and Hoots]{Fortin2014}
+Danthi N~S, Wu C~O, DiMichele D~M, et~al.
+\newblock Percentile ranking and citation impact of a large cohort of national
+  heart, lung, and blood institute-funded cardiovascular r01
+  grants\allowbreak[J/OL].
+\newblock \emph{Circulation Research}, 2014, 114\allowbreak (4): 600-606.
+\newblock DOI: \doi{10.1161/CIRCRESAHA.114.302656}.
+
+\end{thebibliography}

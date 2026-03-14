@@ -1,0 +1,280 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{nsfc}[国家自然科学基金申请书正文样式]
+% ============================================================
+% 国家自然科学基金（NSFC-2026）申请书正文样式文件（ nsfc.sty）
+% 样式设计：Qingke Zhang （tsingke@sdnu.edu.cn)
+%============================================================
+% 适用环境：
+%   - XeLaTeX
+%   - TeX Live 2024 及以上
+%   - macOS / Windows
+
+% 编译顺序: 
+%   - xelatex -> bibtex -> xelatex -> xelatex
+ %   若使用 latexmk，可直接一键编译。
+ %   TeXstudio内配置latexmkming命令：latexmk -xelatex  -silent -synctex=1 %
+ 
+% 主要特点：
+%   1. 正文默认采用小四号宋体；
+%   2. 一级标题与蓝色提纲说明采用四号楷体；
+%   3. 使用标准 \section / \subsection / \subsubsection，
+%      便于 TeXstudio 左侧结构栏识别导航；
+%   4. 支持数字型参考文献引用（[1]、[2-4]）及上标引用切换；
+%   5. 图表标题采用楷体、居中显示；
+%   6. 参考文献标题为中文“参考文献”，左对齐显示；
+%   7. 默认配合本地 GBT7714.bst 使用，支持按引用顺序编号。
+% ============================================================
+
+% ============================================================
+% 一、基础宏包
+% ============================================================
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{geometry}
+\RequirePackage{setspace}
+\RequirePackage{caption}
+\RequirePackage[numbers,sort&compress]{natbib}
+\RequirePackage{etoolbox}
+\RequirePackage{enumitem}
+\RequirePackage{indentfirst}
+\RequirePackage{ifthen}
+\RequirePackage{titlesec}
+\RequirePackage[
+  unicode=true,
+  colorlinks=green,
+  linkcolor=green,
+  urlcolor=green,
+  citecolor=green
+]{hyperref}
+
+% ============================================================
+% 二、页面设置
+% ============================================================
+\geometry{a4paper,left=3.12cm,right=3.12cm,top=2.22cm,bottom=2.18cm}
+\pagestyle{empty}
+\setcounter{secnumdepth}{-2}
+\setcounter{tocdepth}{3}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+\setlength{\bibsep}{0pt}
+
+\emergencystretch=2em
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+% ============================================================
+% 三、颜色定义
+% ============================================================
+\definecolor{NSFCBlue}{RGB}{0,112,192}
+
+% ============================================================
+% 四、字号命令
+% ============================================================
+\newcommand{\chuhao}{\fontsize{42pt}{52pt}\selectfont}
+\newcommand{\xiaochuhao}{\fontsize{36pt}{44pt}\selectfont}
+\newcommand{\yihao}{\fontsize{26pt}{34pt}\selectfont}
+\newcommand{\erhao}{\fontsize{22pt}{30pt}\selectfont}
+\newcommand{\xiaoerhao}{\fontsize{18pt}{26pt}\selectfont}
+\newcommand{\sanhao}{\fontsize{16pt}{24pt}\selectfont}
+\newcommand{\sihao}{\fontsize{14pt}{22pt}\selectfont}
+
+%第二参数为行间距，可根据实际情况调节如22pt
+\newcommand{\xiaosihao}{\fontsize{12pt}{18pt}\selectfont} 
+
+\newcommand{\wuhao}{\fontsize{10.5pt}{18pt}\selectfont}
+\newcommand{\xiaowuhao}{\fontsize{9pt}{16pt}\selectfont}
+\newcommand{\liuhao}{\fontsize{7.875pt}{14pt}\selectfont}
+
+% ============================================================
+% 五、正文字体设置
+% ============================================================
+\newcommand{\NSFCBodySong}{\xiaosihao\songti}
+\newcommand{\NSFCBodyKaiti}{\xiaosihao\kaishu}
+
+\newcommand{\NSFCSetBodyFont}[1]{\gdef\NSFC@BodyFont{#1}}
+\newcommand{\NSFCUseSongBody}{\NSFCSetBodyFont{\NSFCBodySong}}
+\newcommand{\NSFCUseKaitiBody}{\NSFCSetBodyFont{\NSFCBodyKaiti}}
+
+\NSFCUseSongBody
+\AtBeginDocument{\NSFC@BodyFont}
+
+% ============================================================
+% 六、参考文献引用样式
+% ============================================================
+\newcommand{\NSFCCitationInline}{\setcitestyle{numbers,square,comma,sort&compress}}
+\newcommand{\NSFCCitationSuper}{\setcitestyle{numbers,super,sort&compress}}
+\newcommand{\NSFCCitationBlue}{\hypersetup{citecolor=blue}}
+\newcommand{\NSFCCitationBlack}{\hypersetup{citecolor=black}}
+\AtBeginDocument{\NSFCCitationInline\NSFCCitationBlue}
+
+% ============================================================
+% 七、参考文献标题与文献区格式
+% ============================================================
+% “参考文献”标题与上方正文之间的距离
+\newlength{\NSFCBibBeforeTitleSkip}
+\setlength{\NSFCBibBeforeTitleSkip}{0.6\baselineskip}
+
+% “参考文献”标题与下方文献列表之间的距离
+\newlength{\NSFCBibAfterTitleSkip}
+\setlength{\NSFCBibAfterTitleSkip}{-0.20\baselineskip}
+
+% 文献正文样式：小四号宋体，单倍行距
+\newcommand{\NSFCBibBodyStyle}{\xiaosihao\songti\setstretch{1.0}}
+
+% 参考文献标题格式
+\renewcommand{\bibsection}{%
+	\par\vspace{\NSFCBibBeforeTitleSkip}%
+	\noindent{\sihao\kaishu\textbf{参考文献}}\par
+	\vspace{\NSFCBibAfterTitleSkip}%
+}
+
+% 文献列表字体与行距
+\renewcommand{\bibfont}{\xiaosihao\songti}
+\AtBeginEnvironment{thebibliography}{\setstretch{1.0}\xiaosihao\songti}
+
+% 输出参考文献
+\newcommand{\NSFCPrintBibliography}{%
+	\begingroup
+	\NSFCBibBodyStyle
+	\bibliographystyle{GBT7714}
+	\bibliography{reference}
+	\endgroup
+}
+
+% ============================================================
+% 八、图表标题设置
+% ============================================================
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\DeclareCaptionFont{NSFCKai}{\kaishu}
+\captionsetup[figure]{
+  name=图,
+  font={NSFCKai,small},
+  labelfont={NSFCKai},
+  textfont={NSFCKai},
+  labelsep=space,
+  justification=centering
+}
+\captionsetup[table]{
+  name=表,
+  font={NSFCKai,small},
+  labelfont={NSFCKai},
+  textfont={NSFCKai},
+  labelsep=space,
+  justification=centering
+}
+% ============================================================
+% 图、表、公式正文引用命令
+%   1. 自动在“图/表/式”和编号之间加入空格；
+%   2. 使用 ~ 保证空格处不换行；
+%   3. 整体文字可点击跳转到对应对象。
+% ============================================================
+\newcommand{\figref}[1]{\hyperref[#1]{图~\ref*{#1}}~}
+\newcommand{\tabref}[1]{\hyperref[#1]{表~\ref*{#1}}~}
+\newcommand{\eqnref}[1]{\hyperref[#1]{式~(\ref*{#1})}~}
+
+% ============================================================
+% 九、列表环境压缩
+% ============================================================
+\setlist[itemize]{leftmargin=2.3em,itemsep=0.1em,topsep=0.2em,parsep=0pt,partopsep=0pt}
+\setlist[enumerate]{leftmargin=2.6em,itemsep=0.1em,topsep=0.2em,parsep=0pt,partopsep=0pt}
+
+% ============================================================
+% 十、标题样式与 TeXstudio 导航支持
+% 说明：
+%   1. 这里直接格式化标准 section/subsection/subsubsection；
+%   2. main.tex 中显式写出这些命令后，TeXstudio 左侧结构栏即可识别；
+%   3. 若不写 \tableofcontents，不会实际打印目录页。
+% ============================================================
+\newcommand{\NSFCSectionTitleStyle}{\sihao\kaishu\bfseries\color{NSFCBlue}}
+\newcommand{\NSFCGuideStyle}{\sihao\kaishu\color{NSFCBlue}}
+\newlength{\NSFCSectionGuideSep}
+\setlength{\NSFCSectionGuideSep}{0.10\baselineskip}
+\newlength{\NSFCSectionBeforeSkip}
+\setlength{\NSFCSectionBeforeSkip}{0.25\baselineskip}
+\newlength{\NSFCSectionAfterSkip}
+\setlength{\NSFCSectionAfterSkip}{0.15\baselineskip}
+\newcommand{\NSFCKaitiNum}[1]{{\kaishu #1.}}
+
+\titleformat{\section}
+  {\sihao\kaishu\bfseries\color{NSFCBlue}}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\section}{0pt}{0.25\baselineskip}{0.10\baselineskip}
+
+\titleformat{\subsection}
+  {\xiaosihao\songti\bfseries}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\subsection}{2em}{0.20\baselineskip}{0.10\baselineskip}
+
+\titleformat{\subsubsection}
+  {\xiaosihao\songti\bfseries}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\subsubsection}{2em}{0.15\baselineskip}{0.05\baselineskip}
+
+% ============================================================
+% 十一、页首标题、导语与蓝色说明文字
+% ============================================================
+\newcommand{\NSFCReportTitle}{%
+  \begin{center}
+    {\sanhao\kaishu\bfseries 报告正文（2026版）}
+  \end{center}
+}
+
+\newcommand{\NSFCIntro}{%
+  {\sihao\kaishu
+  \quad \quad 参照以下提纲撰写，要求内容翔实、清晰，层次分明，标题突出。\\%
+  {\color{red}\bfseries 申请书正文原则上不超过30页，鼓励简洁表达。}%
+  {\color{NSFCBlue}\bfseries \mbox{请勿删除或改动下述}\\提纲标题及括号中的文字。}\par}
+  \vspace{-0.20\baselineskip}
+}
+
+\newcommand{\NSFCGuideText}[1]{%
+  {\NSFCGuideStyle #1\par}\vspace{\NSFCSectionAfterSkip}%
+}
+
+\newcommand{\NSFCBlueLine}[1]{{\NSFCGuideStyle #1\par}}
+
+% ============================================================
+% 十二、固定蓝色提纲文本（便于保持版式一致）
+% ============================================================
+\newcommand{\NSFCSectionOneGuide}{（为什么要开展此项研究，研究的科学技术价值如何）}
+\newcommand{\NSFCSectionTwoGuide}{（提纲不做限制，请按照研究工作的自身逻辑撰写。应提炼出特色与创新点、年度研究计划）}
+
+\newcommand{\NSFCFoundationOne}{%
+  \NSFCBlueLine{\NSFCKaitiNum{1}\ \textbf{研究基础与可行性分析}（与本项目相关的研究工作积累和已取得的研究工作成绩，研究风险的应对措施等）；}
+}
+\newcommand{\NSFCFoundationTwo}{%
+  \NSFCBlueLine{\NSFCKaitiNum{2}\ \textbf{工作条件}（包括已具备的实验条件，尚缺少的实验条件和拟解决的途径，包括利用国家实验室、全国重点实验室和部门重点实验室等研究基地的计划与落实情况）；}
+}
+\newcommand{\NSFCFoundationThree}{%
+  \NSFCBlueLine{\NSFCKaitiNum{3}\ \textbf{正在承担的与本项目相关的科研项目情况}（申请人和主要参与者正在承担的与本项目相关的科研项目情况，包括国家自然科学基金的项目和国家其他科技计划项目，要注明项目的资助机构、项目类别、批准号、项目名称、获资助金额、起止年月、与本项目的关系及负责的内容等）；}
+}
+\newcommand{\NSFCFoundationFour}{%
+  \NSFCBlueLine{\NSFCKaitiNum{4}\ \textbf{完成国家自然科学基金项目情况}（对申请人负责的前一个已资助期满的科学基金项目（项目名称及批准号）完成情况、后续研究进展及与本申请项目的关系加以详细说明。另附该项目的研究工作总结摘要（限500字）和相关成果详细目录）。}
+}
+
+\newcommand{\NSFCOtherOne}{%
+  \NSFCBlueLine{1. 申请人同年申请不同类型的国家自然科学基金项目情况（列明同年申请的其他项目的项目类型、项目名称信息，并说明与本项目之间的区别与联系；已收到自然科学基金委不予受理或不予资助决定的，无需列出）。}
+}
+\newcommand{\NSFCOtherTwo}{%
+  \NSFCBlueLine{2. 具有高级专业技术职务（职称）的申请人或者主要参与者是否存在同年申请或者参与申请国家自然科学基金项目的单位不一致的情况；如存在上述情况，列明所涉及人员的姓名，申请或参与申请的其他项目的项目类型、项目名称、单位名称、上述人员在该项目中是申请人还是参与者，并说明单位不一致原因。}
+}
+\newcommand{\NSFCOtherThree}{%
+  \NSFCBlueLine{3. 具有高级专业技术职务（职称）的申请人或者主要参与者是否存在与正在承担的国家自然科学基金项目的单位不一致的情况；如存在上述情况，列明所涉及人员的姓名，正在承担项目的批准号、项目类型、项目名称、单位名称、起止年月，并说明单位不一致原因。}
+}
+\newcommand{\NSFCOtherFour}{%
+  \NSFCBlueLine{4. 申请人和主要参与者同年以不同专业技术职务（职称）申请或参与申请科学基金项目的情况（应详细说明原因）。}
+}
+\newcommand{\NSFCOtherFive}{%
+  \NSFCBlueLine{5. 其他。}
+}
+% =========================End===================================
+
